@@ -21,7 +21,16 @@ const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
   port: parseInt(process.env.SMTP_PORT || '587'),
   secure: process.env.SMTP_SECURE === 'true',
-  auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
+  auth: { 
+    user: process.env.SMTP_USER, 
+    pass: process.env.SMTP_PASS 
+  },
+  connectionTimeout: 60000, // 60 seconds
+  greetingTimeout: 30000,   // 30 seconds
+  socketTimeout: 60000,     // 60 seconds
+  tls: {
+    rejectUnauthorized: false
+  }
 });
 transporter.verify()
   .then(() => console.log("Email transporter ready"))
