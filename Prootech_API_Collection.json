@@ -1,0 +1,145 @@
+{
+  "info": {
+    "name": "Prootech Agency API",
+    "description": "Collection for testing Prootech Agency Backend API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/",
+          "host": ["{{baseUrl}}"],
+          "path": [""]
+        },
+        "description": "Check if the server is running"
+      },
+      "response": []
+    },
+    {
+      "name": "Valid Form Submission",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"projectType\": \"Website\",\n  \"service\": \"Web Development\",\n  \"fullName\": \"أحمد محمد\",\n  \"email\": \"ahmed@example.com\",\n  \"phone\": \"+966501234567\",\n  \"description\": \"أريد تطوير موقع إلكتروني للشركة مع لوحة تحكم إدارية\",\n  \"budget\": \"$5000-$10000\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/submit",
+          "host": ["{{baseUrl}}"],
+          "path": ["submit"]
+        },
+        "description": "Submit a valid form with all required fields"
+      },
+      "response": []
+    },
+    {
+      "name": "Missing Fields Test",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"projectType\": \"Website\",\n  \"fullName\": \"أحمد محمد\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/submit",
+          "host": ["{{baseUrl}}"],
+          "path": ["submit"]
+        },
+        "description": "Test validation with missing required fields"
+      },
+      "response": []
+    },
+    {
+      "name": "Invalid Email Test",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"projectType\": \"Website\",\n  \"service\": \"Web Development\",\n  \"fullName\": \"أحمد محمد\",\n  \"email\": \"invalid-email\",\n  \"phone\": \"+966501234567\",\n  \"description\": \"وصف المشروع\",\n  \"budget\": \"$1000-$5000\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/submit",
+          "host": ["{{baseUrl}}"],
+          "path": ["submit"]
+        },
+        "description": "Test email validation with invalid email format"
+      },
+      "response": []
+    },
+    {
+      "name": "Form with Attachments",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"projectType\": \"Mobile App\",\n  \"service\": \"App Development\",\n  \"fullName\": \"��ارة أحمد\",\n  \"email\": \"sara@example.com\",\n  \"phone\": \"+966501234567\",\n  \"description\": \"تطبيق جوال للتجارة الإلكترونية\",\n  \"budget\": \"$10000-$20000\",\n  \"files\": [\n    {\n      \"name\": \"requirements.pdf\",\n      \"dataUrl\": \"data:application/pdf;base64,JVBERi0xLjQKJdPr6eEKMSAwIG9iago8PAovVHlwZSAvQ2F0YWxvZwovUGFnZXMgMiAwIFIKPj4KZW5kb2JqCjIgMCBvYmoKPDwKL1R5cGUgL1BhZ2VzCi9LaWRzIFszIDAgUl0KL0NvdW50IDEKPD4KZW5kb2JqCjMgMCBvYmoKPDwKL1R5cGUgL1BhZ2UKL1BhcmVudCAyIDAgUgovTWVkaWFCb3ggWzAgMCA2MTIgNzkyXQovUmVzb3VyY2VzIDw8Ci9Gb250IDw8Ci9GMSA0IDAgUgo+Pgo+PgovQ29udGVudHMgNSAwIFIKPj4KZW5kb2JqCjQgMCBvYmoKPDwKL1R5cGUgL0ZvbnQKL1N1YnR5cGUgL1R5cGUxCi9CYXNlRm9udCAvSGVsdmV0aWNhCj4+CmVuZG9iago1IDAgb2JqCjw8Ci9MZW5ndGggNDQKPj4Kc3RyZWFtCkJUCi9GMSA4IFRmCjEwIDcwIFRkCihIZWxsbyBXb3JsZCkgVGoKRVQKZW5kc3RyZWFtCmVuZG9iagp4cmVmCjAgNgowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMDkgMDAwMDAgbiAKMDAwMDAwMDA1OCAwMDAwMCBuIAowMDAwMDAwMTE1IDAwMDAwIG4gCjAwMDAwMDAyNDUgMDAwMDAgbiAKMDAwMDAwMDMyMiAwMDAwMCBuIAp0cmFpbGVyCjw8Ci9TaXplIDYKL1Jvb3QgMSAwIFIKPj4Kc3RhcnR4cmVmCjQxNQolJUVPRgo=\"\n    }\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/submit",
+          "host": ["{{baseUrl}}"],
+          "path": ["submit"]
+        },
+        "description": "Test form submission with file attachments"
+      },
+      "response": []
+    },
+    {
+      "name": "Arabic Content Test",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"projectType\": \"موقع إلكتروني\",\n  \"service\": \"تطوير المواقع\",\n  \"fullName\": \"محمد عبدالله السعودي\",\n  \"email\": \"mohammed@example.com\",\n  \"phone\": \"+966501234567\",\n  \"description\": \"أحتاج إلى تطوير موقع إلكتروني متكامل للشركة يتضمن:\\n- صفحة رئيسية جذابة\\n- صفحات الخدمات\\n- نموذج تواصل\\n- لوحة تحكم إدارية\\n- دعم اللغة العربية والإنجليزية\",\n  \"budget\": \"$5000-$10000\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/submit",
+          "host": ["{{baseUrl}}"],
+          "path": ["submit"]
+        },
+        "description": "Test form submission with Arabic content"
+      },
+      "response": []
+    }
+  ]
+}

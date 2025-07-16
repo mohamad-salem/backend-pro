@@ -1,0 +1,9 @@
+{
+  "projectType": "Website",
+  "service": "Web Development", 
+  "fullName": "Test User",
+  "email": "test@example.com",
+  "phone": "123456789",
+  "description": "This is a test description for the project",
+  "budget": "$1000-$5000"
+}
