@@ -1,7 +1,7 @@
 // test-server.js - اختبار الباك إند محلياً
 const http = require('http');
 
-const SERVER_URL = 'http://localhost:3000';
+const SERVER_URL = 'https://backend-prootech1.vercel.app';
 
 // Test data
 const testData = {

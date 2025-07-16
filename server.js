@@ -340,9 +340,9 @@ app.post('/submit', async (req, res) => {
     }
     
     .logo {
+    filter: invert(1) !important;
     height: 100px;
-    filter: invert(1);
-          margin-bottom: 20px;
+    margin-bottom: 20px;
     }
     
     .title {
